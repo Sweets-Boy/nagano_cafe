@@ -1,2 +1,65 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+
+  <div class="row mt-5">
+
+    <div class="col-2">
+      <div class="border border-dark" style="height: 300px;">
+        <p class="text-center border-bottom border-dark mt-1">ジャンル検索</p>
+        <ul class="p-0 ml-2" style="list-style: none;">
+          <li class="mx-3 my-2"><%= link_to 'ケーキ', top_path %></li>
+          <li class="mx-3 my-2"><%= link_to '焼き菓子', top_path %></li>
+          <li class="mx-3 my-2"><%= link_to 'プリン', top_path %></li>
+          <li class="mx-3 my-2"><%= link_to 'キャンディ', top_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-9 offset-1">
+
+      <div class="row border-dark" style="height: 300px;">
+        <div class="col-6 offset-2">
+          <p class="mt-5 pt-4 align-baseline border border-dark" style="height: 150px;">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。<br>
+          </p>
+        </div>
+      </div>
+
+      <div class="row ml-2 mb-2">
+        <h2 class="fs-2 font-weight-bold">新着商品</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <%= image_tag 'IMG_0141.jpg', size:'200x150' %>
+          <p class="mt-2">商品名</p>
+          <p>¥0,000</p>
+        </div>
+        <div class="col-3">
+          <%= image_tag 'IMG_0141.jpg', size:'200x150' %>
+          <p class="mt-2">商品名</p>
+          <p>¥0,000</p>
+        </div>
+        <div class="col-3">
+          <%= image_tag 'IMG_0141.jpg', size:'200x150' %>
+          <p class="mt-2">商品名</p>
+          <p>¥0,000</p>
+        </div>
+        <div class="col-3">
+          <%= image_tag 'IMG_0141.jpg', size:'200x150' %>
+          <p class="mt-2">商品名</p>
+          <p>¥0,000</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <div class="col-2 offset-10 p-0">
+          <%= link_to '全ての商品を見る >', top_path, class:'text-center' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
