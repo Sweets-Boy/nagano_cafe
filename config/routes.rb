@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'homes/top'
-  get 'homes/about'
+  get '/homes/top' => 'homes#top', as: 'top'
+  get '/homes/about' => 'homes#about', as: 'about'
   devise_for :users
   post '/search',  to: 'items#search'
   get  '/search',  to: 'items#search'
