@@ -1,0 +1,14 @@
+	<h3>Items search for "<%= @content %>"</h3>
+  <%= render 'items/index', items: @records %>
+
+
+
+#item.rbに記載
+
+     <% if false %>
+     def self.search(search)
+     return Items.all unless search
+     Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+   end
+ end 
+ <% end %>
