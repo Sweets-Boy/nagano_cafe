@@ -1,7 +1,7 @@
 <header>
  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <div class="container">
-      <!-- %= image_tag "logo.png", class: "header-logo", alt: "nagano_cafe" % -->
+      <%= image_tag "logo.png", class: "header-logo", alt: "nagano_cafe" %>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
        </button>
@@ -10,23 +10,28 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to customer_path(current_user),class: 'nav-link text-light' do %>
-              <span class="boxed"> マイページ </span>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to items_path,class: 'nav-link text-light' do %>
+            <%=  link_to admin_items_path,class: 'nav-link text-light' do %>
                <span class="boxed"> 商品一覧 </span>
             <% end %>
           </li>
           <li>
-            <%=  link_to cart_items_path ,class: 'nav-link text-light' do %>
-              <span class="boxed"> カート </span>
+            <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+              <span class="boxed"> 会員一覧 </span>
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_costomers_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <span class="boxed"> ログアウト </span>
+            <%=  link_to adomin_order_details_path ,class: 'nav-link text-light' do %>
+              <span class="boxed"> 注文履歴一覧 </span>
+            <% end %>
+          </li>
+          <li>
+          <%= link_to destroy_costomers_session_path, method: :delete,class: 'nav-link text-light' do %>
+            <span class="boxed"> ログアウト </span>
+          <% end %>
+        </li>
+          <li>
+            <%= link_to destroy_adomins_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <span class="boxed"> ジャンル一覧 </span>
             <% end %>
           </li>
         <% else %>
