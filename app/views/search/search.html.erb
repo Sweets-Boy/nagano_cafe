@@ -3,12 +3,11 @@
 
 
 
-#item.rbに記載
-
+    #item.rbに記載
      <% if false %>
      def self.search(search)
      return Items.all unless search
      Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
-   end
+     end
  end 
  <% end %>
