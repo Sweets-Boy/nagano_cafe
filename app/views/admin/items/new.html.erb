@@ -1,2 +1,39 @@
 <h2>商品新規登録</h2>
 
+<%= form_with url: admin_items_path, model: @item do |f| %>
+
+  <table>
+    <tr>
+      <td>商品画像</td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <td>商品名</td>
+      <td><%= f.text_field :item, placeholder: "商品名" %></td>
+    </tr>
+    <tr>
+      <td>商品説明</td>
+      <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td>
+    </tr>
+    <tr>
+      <td>ジャンル</td>
+      <td><%= f.select :保存先のカラム名, [["ケーキ", "cake"], ["焼き菓子", "baked"], ["プリン", "pudding"], ["キャンディ", "candy"]], include_blank: "~選択して下さい~" %></td>
+    </tr>
+    <tr>
+      <td>税込価格</td>
+      <td><%= f.text_field :price, placeholder: "1000" %>円</td>
+    </tr>
+    <tr>
+      <td>販売ステータス</td>
+      <td>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active_true, "販売中" %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active_false, "販売停止中" %>
+      </td>
+    </tr>
+  </table>
+  <%= f.submit '新規登録', class:'btn btn-success' %>
+
+<% end %>
+

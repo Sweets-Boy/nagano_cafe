@@ -18,18 +18,22 @@
       </tr>
       <tr>
         <td><%= f.label :email,"メールアドレス" %></td>
+        <td></td>
         <td><%= f.email_field :email, autocomplete: "email",placeholder: "sample@example.com" %></td>
       </tr>
       <tr>
         <td><%= f.label :post_code,"郵便番号(ハイフンなし)" %></td>
+        <td></td>
         <td><%= f.text_field :post_code, placeholder: "0000000" %></td>
       </tr>
       <tr>
         <td><%= f.label :address,"住所" %></td>
+        <td></td>
         <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
       </tr>
       <tr>
         <td><%= f.label :telephone_number,"電話番号(ハイフンなし)" %></td>
+        <td></td>
         <td><%= f.text_field :telephone_number, placeholder: "0000000000" %></td>
       </tr>
       <tr>
