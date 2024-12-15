@@ -1,2 +1,55 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+
+<h2 class='show-title'>山田花子さんの会員詳細</h2>
+
+<table>
+ <% customer.each do |customer| %>
+  <thead>
+   <tr>
+    <th>会員ID</th>
+    <th><%= customer.id %></th>
+    <th colspan="3"></th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>氏名</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>フリガナ</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>郵便番号</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>住所</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>電話番号</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>メールアドレス</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>会員ステータス</td>
+    <td></td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>colspan="1"</td>
+    <td></td>
+    <td></td>
+   </tr> 
+  </tbody>
+</table>
