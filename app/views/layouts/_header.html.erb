@@ -54,12 +54,12 @@
         </ul>
       </div>
       <div class="search">
-    <%= form_with(url: search_path, scope: :item, local: true) do |f| %>
-      <%= f.text_field :search, placeholder: "キーワード検索" %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <% f.submit %>
-    <% end %>
-</div>
+        <%= form_with(url: search_path, scope: :item, local: true) do |f| %>
+          <%= f.text_field :search, placeholder: "キーワード検索" %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <% f.submit %>
+        <% end %>
+      </div>
     </div>
   </nav>
 </header>
