@@ -45,9 +45,10 @@
       <tr>
         <td><%= f.label :is_active,"会員ステータス" %></td>
         <td>
-         <%= form.radio_button :is_active, :male %>
+         <%= f.radio_button :is_active, true %>
          <%= f.radio_btton :is_active %>有効
-         <%= f.radio_btton :is_active %>無効
+         <%= f.radio_button :is_active, false %>
+         <%= f.radio_btton :is_active %>退会
         </td>
         <td colspan="3"></td>
       </tr>
