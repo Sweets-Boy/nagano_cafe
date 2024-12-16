@@ -10,6 +10,8 @@ class Item < ApplicationRecord
   validates :price, presence:true
   validates :is_active, inclusion: {in: [true, false]}
 
+  scope :active, -> { where(is_active: true) }
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
