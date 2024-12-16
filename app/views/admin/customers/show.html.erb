@@ -1,2 +1,55 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
+<h2 class='show-title'><%= @customer.name %>さんの会員詳細</h2>
+
+<table>
+ 
+  <thead>
+   <tr>
+    <th>会員ID</th>
+    <th><%= customer.id %></th>
+    <th colspan="3"></th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>氏名</td>
+    <td>customer.last_name</td>
+    <td>customer.first_name</td>
+   </tr> 
+   <tr>
+    <td>フリガナ</td>
+    <td>customer.last_name_kana</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>郵便番号</td>
+    <td>customer.post_code</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>住所</td>
+    <td>customer.address</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>電話番号</td>
+    <td>customer.telephone_number</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>メールアドレス</td>
+    <td>customer.email</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>会員ステータス</td>
+    <td>customer.is_active</td>
+    <td colspan="3"></td>
+   </tr> 
+   <tr>
+    <td>colspan="1"</td>
+    <td><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_admin_customer_#{@cutstomer.id}" %></td>
+    <td><%= link_to '注文一覧を見る', admin_customer_path(@customer), class: "btn btn-sm btn-primary %></td>
+   </tr> 
+  </tbody>
+</table>
