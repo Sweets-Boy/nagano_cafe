@@ -1,8 +1,8 @@
-
-<h2 class='show-title'>山田花子さんの会員詳細</h2>
+<%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
+<h2 class='show-title'><%= @customer.name %>さんの会員詳細</h2>
 
 <table>
- <% customer.each do |customer| %>
+ 
   <thead>
    <tr>
     <th>会員ID</th>
@@ -13,12 +13,12 @@
   <tbody>
    <tr>
     <td>氏名</td>
-    <td></td>
-    <td colspan="3"></td>
+    <td>customer.last_name</td>
+    <td>customer.first_name</td>
    </tr> 
    <tr>
     <td>フリガナ</td>
-    <td></td>
+    <td>customer.last_name_kana</td>
     <td colspan="3"></td>
    </tr> 
    <tr>
@@ -48,8 +48,8 @@
    </tr> 
    <tr>
     <td>colspan="1"</td>
-    <td></td>
-    <td></td>
+    <td><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_admin_customer_#{@cutstomer.id}" %></td>
+    <td><%= link_to '注文一覧を見る', admin_customer_path(@customer), class: "btn btn-sm btn-primary %></td>
    </tr> 
   </tbody>
 </table>
