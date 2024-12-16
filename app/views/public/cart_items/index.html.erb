@@ -1,2 +1,69 @@
 <h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container mb-5 mt-5">
+  <div class="row">
+    <h4 class = "col-3 text-center offset-1" style = "background-color: #DDDDDD;">
+      ショッピングカート
+    </h4>
+    <div class="col-2 offset-6">
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
+    
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class = "col-4" style = "background-color: #DDDDDD;">商品名</th>
+        <th class = "col-2" style = "background-color: #DDDDDD;">単価(税込み)</th>
+        <th class = "col-2" style = "background-color: #DDDDDD;">数量</th>
+        <th class = "col-2" style = "background-color: #DDDDDD;">小計</th>
+        <th class = "col-2" style = "background-color: #DDDDDD;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td class = "align-middle">
+            <%= image_tag cart_item.item.get_item_image(40,40) %>&nbsp;&nbsp;&nbsp;<%= cart_item.item.name %>
+          </td>
+          <td class = "align-middle">
+            <%= number_with_delimiter(cart_item.item.add_tax_price) %>
+          </td>
+          <td class = "align-middle text-center">
+            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+              <%= f.select :amount, *[1..10], class: "form-control" %>&nbsp;&nbsp;&nbsp;
+              <%= f.submit '変更', class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td class = "align-middle">
+            <%= number_with_delimiter(cart_item.subtotal) %>
+          </td>
+          <td class = "align-middle text-center">
+            <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody> 
+  </table>
+</div>
+<div class="container d-flex">
+  <div class="row">
+    <div class="col">
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <table class="table table-bordered col-3 offset-7 align-middle">
+    <tr>
+      <th class = "col-1 bg-light">合計金額</th>
+      <td class = "col-1"><%= number_with_delimiter(@cart_items.sum(&:subtotal)) %></td>
+    </tr>
+  </table>
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-6 offset-3">
+      <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+    </div>
+  </div> 
+</div>
