@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= image_tag item.get_image(300, 200) %>
+    </div>
+
+    <div class="col-8">
+      <table>
+        <tbody>
+          <tr class="my-2">
+            <td class="py-2">商品名</td>
+            <td class="pl-3"><%= item.name %></td>
+          </tr>
+          <tr class="my-2">
+            <td class="py-2">商品説明</td>
+            <td class="pl-3"><%= item.introduction %></td>
+          </tr>
+          <tr class="my-2">
+            <td class="py-2">ジャンル</td>
+            <td class="pl-3"><%= item.genre.name %></td>
+          </tr>
+          <tr class="my-2">
+            <td class="py-2">
+              税込価格<br>
+              (税抜き価格)
+            </td>
+            <td class="pl-3">
+              <%= number_with_delimiter((item.price * 1.1).to_i) %>
+              (<%= number_with_delimiter(item.price) %>)円
+            </td>
+          </tr>
+          <tr class="my-2">
+            <td class="py-2">販売ステータス</td>
+            <% if item.is_active == true %>
+              <td class="text-success pl-3">販売中</td>
+            <% else %>
+              <td class="text-secondary pl-3">販売停止中</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+  <div class="row justify-content-center mt-4">
+    <%= link_to '編集する', edit_admin_item_path, class:'btn btn-success btn-lg' %>
+  </div>
+</div>
