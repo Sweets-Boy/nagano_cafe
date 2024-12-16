@@ -31,6 +31,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
+      @genres = Genre.all
       render :edit
     end
   end
