@@ -1,26 +1,39 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <h3 class="m-5", style="background-color: #E6E6E6;"> ログイン </h3>
+  </div>
+    
+  <div class="row ml-5">
+    <h5 style="background-color: #E6E6E6;">会員の方はこちらからログイン</h5>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+    <div class="my-5">
+      <div class="row justify-content-center mb-3">
+        <div class="col-2"><%= f.label :email ,"メールアドレス", class: "form-label"  %></div>
+        <div class="col-5"><%= f.email_field :email, size:"50x1", autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %></div>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="row justify-content-center ">
+        <div class="col-2"><%= f.label :password, "パスワード" %></div>
+        <div class="col-5"><%= f.password_field :password, size:"50x1",  autocomplete: "current-password" %></div>
+      </div>
+
+      <div class="col-10 actions text-center mt-5">
+        <%= f.submit "    ログイン    ", class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "public/shared/links" %>
+  <div class="row ml-5">
+    <h5 style="background-color: #E6E6E6;">会員登録がお済みでない方</h5>
+  </div>
+
+  <div class="row ml-5">
+    <div class="col ml-5 pl-5"><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください</div>
+  </div>
+  <br></br>
+
+
+</div>
