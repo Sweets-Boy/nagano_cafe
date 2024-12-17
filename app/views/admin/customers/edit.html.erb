@@ -1,5 +1,5 @@
 
-<h2 class='edit-title'>山田花子さんの会員情報編集</h2>
+<h2 class='edit-title'><%= @customer.name %>さんの会員情報編集</h2>
 
   <%= form_with model: @customer, url: edit_admin_customer_path, local: true do |f| %>
 
