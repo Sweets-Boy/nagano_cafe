@@ -1,10 +1,10 @@
-<h1>Public::CartItems#index</h1>
-<div class="container">
 
-  <div class="row">
+<div class="container p-5">
+
+  <div class="row mb-4">
     <h4 style="background-color: #E6E6E6;">ショッピングカート</h4>
     <div class="col d-flex justify-content-end">
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %>
+      <%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %>
     </div>
   </div>
 
@@ -43,13 +43,14 @@
             </td>
           </tr>
         <% end %>
+        <% total += subtotal %>
       <% end %>
-      <% total += subtotal %>
+      
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="col-8">
+  <div class="row mt-5">
+    <div class="col-8 pl-5">
       <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </div>
     <div class="col-4">
