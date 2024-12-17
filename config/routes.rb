@@ -25,15 +25,16 @@ devise_for :customers,skip: [:passwords], controllers: {
   namespace :public do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:index, :new, :show, :create]
-    post 'orders/confirm'
-    get 'orders/thanks'
-
+      collection do
+        post 'orders/confirm'
+        get 'orders/thanks'
+      end
+    end
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
-    
     resources :customers, only: [:show, :edit, :update]
     patch 'customers/withdrawal'
     get 'customers/unsubscribe'
