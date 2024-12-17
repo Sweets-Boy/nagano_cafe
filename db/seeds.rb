@@ -6,15 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Admin.find_or_create_by(email: "admin123@gmail.com") do |user|
-  user.password = "admin123"
+  user.password = "admin123"  # 必要な場合のみ設定
 end
+
 Genre.create!([
   { name: 'ケーキ' },
   { name: 'プリン' },
   { name: '焼き菓子' },
   { name: 'キャンディ' }
 ])
+
 Item.create!([
   {
     name: 'クリスマスケーキ',
