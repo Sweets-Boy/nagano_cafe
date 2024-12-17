@@ -1,13 +1,13 @@
 
-<h2 class='edit-title'><%= @customer.name %>さんの会員情報編集</h2>
+<h2 class='edit-title'><%= @customer.full_name %>さんの会員情報編集</h2>
 
-  <%= form_with model: @customer, url: edit_admin_customer_path, local: true do |f| %>
+  <%= form_with model: @customer, url: edit_admin_customer_path(@customer), local: true do |f| %>
 
     <table>
      <thead>
       <tr>
-        <th><%= f.label :customer_id, "会員ID" %></th>
-        <th><%= f.text_field :customer.id %></th>
+        <th><%= f.label :id, "会員ID" %></th>
+        <th><%= f.text_field :id %></th>
         <th colspan="3"></th>
       </tr>
      </thead>
@@ -39,19 +39,29 @@
       </tr>
       <tr>
         <td><%= f.label :email,"メールアドレス" %></td>
-        <td><%= f.test_field :email %></td>
+        <td><%= f.text_field :email %></td>
         <td colspan="3"></td>
       </tr>
       <tr>
         <td><%= f.label :is_active,"会員ステータス" %></td>
         <td>
          <%= f.radio_button :is_active, true %>
-         <%= f.radio_btton :is_active %>有効
+         <%= f.label :is_active_true, "有効" %>
          <%= f.radio_button :is_active, false %>
-         <%= f.radio_btton :is_active %>退会
+         <%= f.label :is_active_false, "退会" %>
         </td>
         <td colspan="3"></td>
       </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td>
+          <%= link_to '変更を保存', admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
+        </td>
+        <td colspan="3"></td>
+      </tr>
+    </tbody> 
+   </table>
+  <% end %>
      
       
       
