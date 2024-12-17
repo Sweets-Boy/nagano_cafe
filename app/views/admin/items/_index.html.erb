@@ -17,7 +17,7 @@
             <%= item.name %>
           <% end %>
         </td>
-        <td><%= item.price %></td>
+        <td><%= number_with_delimiter(item.price) %></td>
         <td><%= item.genre.name %></td>
         <% if item.is_active == true %>
           <td class="text-success">販売中</td>
@@ -28,3 +28,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate items %>

@@ -8,7 +8,7 @@
 
 
 Admin.find_or_create_by(email: "admin123@gmail.com") do |user|
-  user.password = "admin123"  # 必要な場合のみ設定
+  user.password = "admin123"
 end
 
 Genre.create!([
