@@ -19,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    customer_session_path
+    root_path
   end
   # 顧客ログイン後のパス指定
   # protected

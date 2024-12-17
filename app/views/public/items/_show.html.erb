@@ -1,0 +1,12 @@
+<div class="row">
+
+  <div class="col-4">
+    <%= image_tag item.get_image(300, 200) %>
+  </div>
+
+  <div class="col-8">
+    <h3><%= item.name %></h3>
+    <p><%= item.introduction %></p>
+    <p><strong>¥<%= number_with_delimiter((item.price * 1.1).to_i) %></strong>(税込)</p>
+  </div>
+</div>

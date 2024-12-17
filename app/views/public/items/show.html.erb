@@ -1,2 +1,11 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+
+  <div class="row mt-5">
+
+    <%= render 'homes/genre_index', genres:@genres %>
+    <div class="col-9">
+      <%= render 'show', item:@item %>
+    </div>
+    
+  </div>
+</div>

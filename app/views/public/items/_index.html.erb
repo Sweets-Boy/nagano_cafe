@@ -1,0 +1,14 @@
+<div class="row d-wrap mt-3">
+
+  <% items.each do |item| %>
+  <div class="col-3">
+    <%= link_to public_item_path(item.id) do %>
+      <%= image_tag item.get_image(200, 100) %>
+    <% end %>
+    <p><%= item.name %></p>
+    <p>¥<%= number_with_delimiter(item.price) %></p>
+  </div>
+  <% end %>
+
+
+</div>
