@@ -1,0 +1,10 @@
+<div class="col-2">
+  <div class="border border-dark" style="height: 300px;">
+    <p class="text-center border-bottom border-dark mt-1">ジャンル検索</p>
+    <ul class="p-0 ml-2" style="list-style: none;">
+      <% genres.each do |genre| %>
+        <li class="mx-3 my-2" style="color: #000000"><%= link_to genre.name, top_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
