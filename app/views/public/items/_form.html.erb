@@ -1,0 +1,8 @@
+<%= form_with model:@cart_item, url:cart_items_path, method: :post do |f| %>
+
+<%= f.hidden_field :item_id, value: @item.id %>
+<div class="row mt-5">
+  <%= f.select :amount, options_for_select((1..10).to_a), { include_blank: "個数選択" }, class:'form-control custom-select-dropdown w-auto' %>
+  <%= f.submit 'カートに入れる', class:'btn btn-success ml-5' %>
+</div>
+<% end %>

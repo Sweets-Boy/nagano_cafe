@@ -22,12 +22,12 @@ devise_for :customers,skip: [:passwords], controllers: {
   end
 
 
-  namespace :public do
+  scope module: :public do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:index, :new, :show, :create] do
       collection do
-        post 'orders/confirm'
-        get 'orders/thanks'
+        post 'confirm'
+        get 'thanks'
       end
     end
     resources :cart_items, only: [:index, :create, :update, :destroy] do

@@ -4,7 +4,7 @@
   <div class="row mb-4">
     <h4 style="background-color: #E6E6E6;">ショッピングカート</h4>
     <div class="col d-flex justify-content-end">
-      <%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td class="align-middle">
-              <%= image_tag cart_item.item.get_image, width: 90, height: 60 %>
+              <%= image_tag cart_item.item.get_image(90, 60) %>
               <%= cart_item.item.name %>
             </td>
             <td class="align-middle"><%= number_to_currency(cart_item.subtotal) %></td>
@@ -42,8 +42,8 @@
               <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
+          <% total += cart_item.subtotal %>
         <% end %>
-        <% total += subtotal %>
       <% end %>
       
     </tbody>
