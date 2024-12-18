@@ -1,17 +1,20 @@
 
-<h2 class='index-title'>会員一覧</h2>
 
-<table>
+<div class="container" style="max-width: 60%; margin: 0 auto;">
+  <h4 class='index-title'>会員一覧</h4>
+ <table class="table  table-bordered text-center">
   <thead>
     <tr class='index-tr'>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
+      <th scope="col">会員ID</th>
+      <th scope="col">氏名</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">ステータス</th>
+    </tr>
+
     </tr>
   </thead>
   <tbody>
-   <% @customers.each do |customers| %>
+   <% @customers.each do |customer| %>
     <tr>
       <td><%= customer.id %></td>
       <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
@@ -21,5 +24,6 @@
 
     <% end %>
   </tbody>
-</table>
-<%= paginate customers %>
+ </table>
+</div>
+<%= paginate @customers %>
