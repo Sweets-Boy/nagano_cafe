@@ -22,6 +22,28 @@ class Public::OrdersController < ApplicationController
     end
   end
 
+  def confirm_order
+    @order = current_customer.orders.build(order_params.except(:address_id, :address_select))
+    @order.shipping_fee = 800 # 送料の設定の流れが不明だったため、仮で800円に設定
+    @cart_items = current_customer.cart_items.includes(:item)
+    case params[:order][:address_select]
+    when "customer_address"
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.full_name
+    when "address_list"
+      address = current_customer.addresses.find(params[:order][:address_id])
+      @order.post_code = address.post_code
+      @order.address = address.address
+      @order.name = address.name
+    when "new_address"
+      # 新しいお届け先を使用
+      # 送信されたフォームのデータをそのまま使用
+    else
+      render :new
+    end
+  end
+
   def thanks
   end
 
