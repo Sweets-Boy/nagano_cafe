@@ -7,3 +7,5 @@ class SearchController < ApplicationController
     @posts_all = Post.search(@keyword)
     @posts = Kaminari.paginate_array(@posts_all).page(params[:page]).per(10)
   end
+
+end
