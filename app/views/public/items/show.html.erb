@@ -5,6 +5,9 @@
     <%= render 'homes/genre_index', genres:@genres %>
     <div class="col-9">
       <%= render 'show', item:@item %>
+      <div class="offset-4">
+        <%= render 'form', cart_item:@cart_item %>
+      </div>
     </div>
     
   </div>

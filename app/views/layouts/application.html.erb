@@ -25,18 +25,17 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
      <ul class="navbar-nav ml-auto">
   
-     <% if admin_signed_in? %>
-      <% if request.fullpath.include? "/admin" %>
-        <%= render 'layouts/admin_header' %>
+      <% if admin_signed_in? %>
+        <% if request.fullpath.include? "/admin" %>
+          <%= render 'layouts/admin_header' %>
+        <% else %>
+          <%= render 'layouts/header' %>
+        <% end %>
+      <% elsif customer_signed_in? %>
+        <%= render 'layouts/customer_header' %>
       <% else %>
         <%= render 'layouts/header' %>
       <% end %>
-     <% elsif customer_signed_in? %>
-       <%= render 'layouts/customer_header' %>
-     <% else %>
-       <%= render 'layouts/header' %>
-         <% end %>
-       </li>
       </ul>
    </div>
 
