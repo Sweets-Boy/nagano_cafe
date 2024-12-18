@@ -33,8 +33,6 @@
           <% end %>
         <% elsif customer_signed_in? %>
           <%= render 'layouts/customer_header' %>
-        <% else %>
-          <%= render 'layouts/header' %>
         <% end %>
 
        
@@ -56,7 +54,7 @@
       <main>
         <p id="notice"><%= notice %></p>
         <div class="d-flex justify-content-center mb-2">
-          <%= render 'search/form' %>
+          <%= render 'searches/form' %>
         </div>
         <%= yield %>
       </main>
