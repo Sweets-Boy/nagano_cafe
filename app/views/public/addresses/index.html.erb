@@ -16,5 +16,32 @@
       <div>
         <div class="col-3"><%= f.label :name, "宛名" %></div>
         <div class="col-3"><%= f.text_field :name, placeholder: "令和道子" %></div>
-        <div class="col-3">
+        <div class="col-3"><%= f.submit "     新規登録     ", class: "btn btn-success"%></div>
       </div>
+    <% end %>
+
+    <table class="table table-bordered border-dark">
+     <thead class="table-active">
+      <tr>
+       <th class="col-2">郵便番号</th>
+       <th class="col-4">住所</th>
+       <th class="col-2">宛名</th>
+       <th class="col-3"></th>
+      </tr>
+     </thead>
+     <tbody>
+       <% if current_customer.addresses.present? %>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.post_cord %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
+            <td>
+                <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
+                <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+         <% end %>
+     </tbody>
+    </table>
+</div>
