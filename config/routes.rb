@@ -22,7 +22,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   end
 
 
-  namespace :public do
+  scope module: :public do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:index, :new, :show, :create] do
       collection do
