@@ -1,13 +1,12 @@
 <div class="col-2">
   <div class="border border-dark" style="height: 300px;">
     <p class="text-center border-bottom border-dark mt-1">ジャンル検索</p>
-    
-    <%= form_with url: genre_search_path, method: :get do |f| %>
-      <ul class="p-0 ml-2" style="list-style: none;">
-        <% genres.each do |genre| %>
-          <li class="mx-3 my-2" style="color: #000000"><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %></li>
-        <% end %>
-      </ul>
-    <% end %>
+
+    <ul class="p-0 ml-2" style="list-style: none;">
+      <% genres.each do |genre| %>
+        <li class="mx-3 my-2" style="color: #000000"><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %></li>
+      <% end %>
+    </ul>
+
   </div>
 </div>
