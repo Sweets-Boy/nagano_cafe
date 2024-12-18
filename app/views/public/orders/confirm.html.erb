@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-8">
-      <table class='table table-inverse table-bordered'>
+      <table class='table table-bordered border-dark'>
         <thead class="table-active">
           <tr>
             <th>商品名</th>
@@ -20,12 +20,12 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <%= image_tag cart_item.item.get_image, size: "90x60", fallback: "no_image.jpg" %>
+                <%= image_tag cart_item.item.get_image(60,60) %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.item.with_tax_price %></td>
-              <td><%= cart_item.amount %></td>
-              <td><%= cart_item.subtotal %></td>
+              <td class="align-middle"><%= number_to_currency(cart_item.item.with_tax_price) %></td>
+              <td class="align-middle"><%= cart_item.amount %>個</td>
+              <td class="align-middle"><%= number_to_currency(cart_item.subtotal) %></td>
               <% total += cart_item.subtotal %>
             </tr>
           <% end %>
@@ -34,18 +34,18 @@
     </div>
 
     <div class="col-3">
-      <table class='table table-inverse table-bordered'>
+      <table class='table table-bordered border-dark'>
         <tr>
           <th class="col-5 table-active">送料</th>
-          <td><%= @order.shipping_cost %></td>
+          <td><%= number_to_currency(@order.shipping_cost) %></td>
         </tr>
         <tr>
           <th class="table-active">商品合計</th>
-          <td><%= total %></td>
+          <td><%= number_to_currency(total) %></td>
         </tr>
         <tr>
           <th class="table-active">請求金額</th>
-          <td><%= @order.shipping_cost + total %></td>
+          <td><%= number_to_currency(@order.shipping_cost + total) %></td>
         </tr>
       </table>
     </div>
@@ -59,7 +59,7 @@
   <div class="row mb-5">
     <div class="col-1"><strong>お届け先</strong></div>
     <div class="col-4">
-      〒<%= @order.postal_code %><%= @order.address %><br/>
+      〒<%= @order.postal_code %> <%= @order.address %><br/>
       <%= @order.name %>
     </div>
   </div>

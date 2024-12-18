@@ -7,7 +7,6 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.build(order_params)
     @cart_items = current_customer.cart_items.includes(:item)
-
     if @order.save
       @cart_items.each do |cart_item|
         @order.order_details.create(
