@@ -1,4 +1,3 @@
-
 class Public::OrdersController < ApplicationController
 
   def new
@@ -19,7 +18,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.destroy_all
       redirect_to thanks_pubilc_orders_path
     else
-      render :confirm_order_path
+      render :confirm_public_order_path
     end
   end
 

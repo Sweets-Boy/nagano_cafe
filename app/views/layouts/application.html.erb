@@ -36,6 +36,13 @@
       <% else %>
         <%= render 'layouts/header' %>
       <% end %>
+
+     <% elsif customer_signed_in? %>
+       <%= render 'layouts/customer_header' %>
+     <% else %>
+       <%= render 'layouts/header' %>
+     <% end %>
+       
       </ul>
      
 

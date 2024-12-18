@@ -25,7 +25,7 @@
 
         <% @items.each do |item| %>
           <div class="col-3">
-            <%= link_to item_path(item.id) do %>
+            <%= link_to public_item_path(item.id) do %>
               <%= image_tag item.get_image(200, 100) %>
             <% end %>
             <p><%= item.name %></p>
@@ -38,7 +38,7 @@
 
       <div class="row justify-content-end">
         <div class="col-2 offset-10 p-0">
-          <%= link_to '全ての商品を見る >', items_path, class:'text-center' %>
+          <%= link_to '全ての商品を見る >', public_items_path, class:'text-center' %>
         </div>
       </div>
 

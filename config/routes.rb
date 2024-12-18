@@ -22,24 +22,24 @@ devise_for :customers,skip: [:passwords], controllers: {
   end
 
 
-
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:index, :new, :show, :create] do
-    collection do
-      post 'confirm'
-      get 'thanks'
+  namespace :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:index, :new, :show, :create] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
     end
-  end
-  resources :cart_items, only: [:index, :create, :update, :destroy] do
-    collection do
-      delete 'destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
     end
+    resources :customers, only: [:show, :edit, :update]
+    patch 'customers/withdrawal'
+    get 'customers/unsubscribe'
+    resources :items, only: [:index, :show]
   end
-  resources :customers, only: [:show, :edit, :update]
-  patch 'customers/withdrawal'
-  get 'customers/unsubscribe'
-  resources :items, only: [:index, :show]
-
 
   root to: 'homes#top'
   get '/homes/top' => 'homes#top', as: 'top'
