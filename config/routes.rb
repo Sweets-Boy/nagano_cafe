@@ -47,6 +47,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   
   post '/search',  to: 'items#search'
   get '/search', to: 'items#search'
+  get 'genre/search', to: 'searches#genre_search', as: 'genre_search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
