@@ -1,9 +1,9 @@
 <div class="row">
-  <%= form_with url:admin_genres_path, model: genre do |f| %>
+  <%= form_with url:admin_genres_path, model: genre, local: false do |f| %>
     <table>
       <tr>
         <td><%= f.label :name, "ジャンル名" %></td>
-        <td><%= f.text_field :name, placeholder: "ジャンル名" %></td>
+        <td><%= f.text_field :name, placeholder: "ジャンル名", id:"text_field" %></td>
         <td><%= f.submit '新規登録', class:'btn btn-success' %></td>
       </tr>
     </table>
