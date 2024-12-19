@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <h3 class="m-5", style="background-color: #E6E6E6;">配送先登録/一覧</h3>
+    <h3 class="m-5" style="background-color: #E6E6E6;">配送先登録/一覧</h3>
   </div>
-    <%= form_with model: @cstomer, url: customer_address_path, local: true do |f| %>
+    <%= form_with model: @cstomer, url: addresses_path, local: true do |f| %>
       <div class="row mb-2">
        <div class="col-3"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></div>
        <div class="col-3"><%= f.text_field :post_code, placeholder: "0000000" %></div>
@@ -41,7 +41,8 @@
                 <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
-         <% end %>
+        <% end %>
+       <% end %>
      </tbody>
     </table>
 </div>
