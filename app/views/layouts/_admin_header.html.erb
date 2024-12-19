@@ -2,7 +2,36 @@
        
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
    
-    
+
+    <ul class="navbar-nav ml-auto">
+        
+      <li>
+        <%=  link_to admin_items_path,class: 'nav-link text-dark' do %>
+        <span class="boxed"> 商品一覧 </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_customers_path,class: 'nav-link text-dark' do %>
+        <span class="boxed"> 会員一覧 </span>
+        <% end %>
+      </li>
+      <li>
+        <%=  link_to admin_path ,class: 'nav-link text-dark' do %>
+        <span class="boxed"> 注文履歴一覧 </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+        <span class="boxed"> ジャンル一覧 </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+        <span class="boxed"> ログアウト </span>
+        <% end %>
+      </li>
+    </ul>
+
   </div>
     
     

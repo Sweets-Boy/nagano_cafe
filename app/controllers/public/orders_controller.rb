@@ -12,9 +12,10 @@ class Public::OrdersController < ApplicationController
         @order.order_details.create(
           item_id: cart_item.item_id,
           amount: cart_item.amount,
-          price: cart_item.subtotal
+          price: cart_item.item.with_tax_price
         )
       end
+      p @order
       @cart_items.destroy_all
       redirect_to thanks_orders_path
     else
