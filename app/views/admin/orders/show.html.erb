@@ -61,7 +61,7 @@
               <td><%= number_to_currency(order_detail.price * order_detail.amount) %></td>
               <td>
                 <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f|  %>
-                  <%= f.select :making_status, options_from_collection_for_select(Order_details.all, :making_status ) %>
+                  <%= f.select :making_status, OrderDetail.making_statuses %>
                   <%= f.submit '更新', class: "btn btn-success mx-5" %>
                 <% end %>
               </td>
@@ -75,7 +75,7 @@
       <table>
         <tr>
           <th class="col-2">商品合計</th>
-          <td class="col-1 text-right"><%= number_to_currency(@order.total_payment - @order.shipping_cost) %>
+          <td class="col-1 text-right"><%= number_to_currency(@order.total_payment) %>
           </td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@
         </tr>
         <tr>
           <th class="col-2">請求合計金額</th>
-          <td class="col-1 text-right"><%= number_to_currency(@order.total_payment) %>
+          <td class="col-1 text-right"><%= number_to_currency(@order.total_payment + @order.shipping_cost) %>
           </td>
         </tr>
       </table>
