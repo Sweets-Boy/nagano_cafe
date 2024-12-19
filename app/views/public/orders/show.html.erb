@@ -1,2 +1,78 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+
+<div class = "container mt-5">
+  <div class="row">
+    <h4 class = "col-2 text-center" style = "background-color: #E6E6E6;">注文履歴詳細</h4>
+  </div>
+</div> 
+
+<div class="container-fluid mt-3 px-5">
+  <div class="row">
+    <div class="col-7">
+      <p><strong>注文情報</strong></p>
+      <table class="table table-bordered border-dark">
+        <tr>
+          <th style="background-color: #E6E6E6;">注文日</th>
+          <td><%= @order.created_at.strftime("%Y年%m月%d日") %></td>
+        </tr>
+        <tr>
+          <th class="align-middle" style="background-color: #E6E6E6;">配送先</th>
+          <td>
+            〒<%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th style="background-color: #E6E6E6;">支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th style="background-color: #E6E6E6;">ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-3">
+      <p><strong>請求金額</strong></p>
+      <table class="table table-bordered border-dark">
+        <tr>
+          <th style="background-color: #E6E6E6;">商品合計</th>
+          <td><%= number_to_currency(@order.total_payment) %></td>
+        </tr> 
+        <tr>
+          <th style="background-color: #E6E6E6;">配送料</th>
+          <td><%= number_to_currency(@order.shipping_cost) %></td>
+        </tr> 
+        <tr>
+          <th style="background-color: #E6E6E6;"><strong>ご請求額</strong></th>
+          <td><%= number_to_currency(@order.total_payment) %></td>
+        </tr>
+      </table> 
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid mb-5 mt-3 px-5">
+  <div class="row">
+    <div class="col-9">
+      <p><strong>注文商品</strong></p>
+      <table class="table table-bordered border-dark">
+        <tr>
+          <th style="background-color: #E6E6E6;">商品</th>
+          <th style="background-color: #E6E6E6;">単価(税込)</th>
+          <th style="background-color: #E6E6E6;">個数</th>
+          <th style="background-color: #E6E6E6;">小計</th>
+        </tr>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= number_to_currency(order_detail.price) %></td>
+            <td><%= order_detail.amount %>個</td>
+            <td><%= number_to_currency(order_detail.item.with_tax_price * order_detail.amount) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
