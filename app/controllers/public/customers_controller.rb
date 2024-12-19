@@ -4,11 +4,11 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def unsubscribe
@@ -27,6 +27,7 @@ class Public::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to customer_path(@customer), notice: '顧客情報が更新されました。'
     else
+      flash.now[:alert] = '更新に失敗しました。入力内容を確認してください。'
       render :edit
     end
   end
