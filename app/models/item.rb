@@ -25,4 +25,9 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  scope :search_by_keyword, -> (keyword) {
+    where("items.name LIKE ? OR genres.name LIKE ?", "%#{keyword}%", "%#{keyword}%" ).joins(:genre)
+  }
+
+
 end
