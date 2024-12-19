@@ -7,10 +7,15 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path
+      @genres = Genre.all
+      respond_to do |format|
+        format.js
+      end
     else
       @genres = Genre.all
-      render :index
+      respond_to do |format|
+        format.js { render :create_error }
+      end
     end
   end
 
