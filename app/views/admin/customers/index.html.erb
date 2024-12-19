@@ -1,5 +1,7 @@
 <div class="container" style="max-width: 60%; margin: 0 auto;">
-  <h4 class='index-title'>会員一覧</h4>
+  <div class="row">
+    <h4 class="m-1" style="background-color: #E6E6E6;">会員一覧</h4>
+  </div>
 
  <table class="table  table-bordered text-center">
   <thead>
@@ -9,16 +11,20 @@
       <th scope="col">メールアドレス</th>
       <th scope="col">ステータス</th>
     </tr>
-
-    </tr>
   </thead>
   <tbody>
    <% @customers.each do |customer| %>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+      <td><%= link_to customer.full_name, admin_customer_path(customer), style: "color: black;" %></td>
       <td><%= customer.email %></td>
-      <td><%= customer.is_active ? '有効' : '退会' %></td>
+      <td>
+       <% if customer.is_active %>
+        <span style="color: green; font-weight: bold;">有効</span>
+       <% else %>
+        <span style="color: grey; font-weight: bold;">退会</span>
+       <% end %>
+      </td>
     </tr>
 
     <% end %>

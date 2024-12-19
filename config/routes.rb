@@ -35,9 +35,13 @@ devise_for :customers,skip: [:passwords], controllers: {
         delete 'destroy_all'
       end
     end
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
     patch 'customers/withdrawal'
     get 'customers/unsubscribe'
+  end
+    get 'customers/my_page', to: 'customers#show', as: :customers_my_page
+    patch 'information', to: 'customers#update', as: :costomers_information_update
+    get 'customers/information/edit', to: 'customers#edit', as: :customers_information_edit
     resources :items, only: [:index, :show]
   end
 
