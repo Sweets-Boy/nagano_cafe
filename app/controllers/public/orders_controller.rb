@@ -16,29 +16,32 @@ class Public::OrdersController < ApplicationController
         )
       end
       @cart_items.destroy_all
-      redirect_to thanks_pubilc_orders_path
+      redirect_to thanks_orders_path
     else
-      render :confirm_order_path
+      render :confirm_orders_path
     end
   end
 
-  def confirm_order
-    @order = current_customer.orders.build(order_params.except(:address_id, :address_select))
-    @order.shipping_fee = 800 # 送料の設定の流れが不明だったため、仮で800円に設定
+  def confirm
+    @order = Order.new(order_params)
+    @order.shipping_cost = 800
     @cart_items = current_customer.cart_items.includes(:item)
     case params[:order][:address_select]
     when "customer_address"
-      @order.post_code = current_customer.post_code
+      @order.postal_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
     when "address_list"
-      address = current_customer.addresses.find(params[:order][:address_id])
-      @order.post_code = address.post_code
+      address = current_customer.addresses.find_by(id: params[:order][:address_id])
+      @order.postal_code = address.postal_code
       @order.address = address.address
       @order.name = address.name
     when "new_address"
-      # 新しいお届け先を使用
-      # 送信されたフォームのデータをそのまま使用
+      if new_address_params?
+        @order.postal_code = params[:order][:postal_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
+      end
     else
       render :new
     end
@@ -60,7 +63,13 @@ class Public::OrdersController < ApplicationController
   private
  
    def order_params
-     params.require(:order).permit(:post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :status)
    end
+
+   def new_address_params?
+    params[:order][:postal_code].present? &&
+    params[:order][:address].present? &&
+    params[:order][:name].present?
+  end
 
 end
