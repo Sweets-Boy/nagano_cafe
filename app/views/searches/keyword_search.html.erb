@@ -6,7 +6,7 @@
     <%= render 'homes/genre_index', genres:@genres %>
     <div class="col-9">
       <div class="row">
-        <h3>" <%= @genre.name %> "一覧</h3>
+        <h3>" <%= @keyword %> "の検索結果</h3>
         <p>(全<%= @items.count %>件)</p>
       </div>
 
@@ -21,7 +21,7 @@
         </div>
         <% end %>
       <% else %>
-        <p>商品が見つかりませんでした</p>
+        <p>該当する商品が見つかりませんでした</p>
       <% end %>
 
     </div>
