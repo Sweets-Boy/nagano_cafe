@@ -31,7 +31,7 @@
       </li>
 <% elsif customer_signed_in? %>
        <li>
-          <%= link_to customer_path(current_customer),class: 'nav-link text-dark' do %>
+          <%= link_to customers_my_page_path(current_customer),class: 'nav-link text-dark' do %>
           <span class="boxed"> マイページ </span>
           <% end %>
        </li>

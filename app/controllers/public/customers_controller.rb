@@ -23,9 +23,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
+    Rails.logger.debug("PARAMS: #{params.inspect}")
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: '顧客情報が更新されました。'
+      redirect_to customers_my_page_path(@customer), notice: '顧客情報が更新されました。'
     else
       flash.now[:alert] = '更新に失敗しました。入力内容を確認してください。'
       render :edit

@@ -6,34 +6,34 @@
 
     <div class ="row mb-2">
         <div class="col-3">会員ID</div>
-        <div class="col-3"><%= f.text_field :id %></div>
+        <div class="col-3"><%= @customer.id %></div>
     </div>
      
     <div class="row mb-2">
       <div class="col-3">氏名</div>
-      <div class="col-3"><%= f.text_field :last_name %></div>
-      <div class="col-3"><%= f.text_field :first_name %></div>
+      <div class="col-3"><%= f.text_field :last_name, style: "border-radius: 5px; border: 1px solid black;" %></div>
+      <div class="col-3"><%= f.text_field :first_name, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">フリガナ</div>
-      <div class="col-3"><%= f.text_field :last_name_kana %></div>
-      <div class="col-3"><%= f.text_field :first_name_kana %></div>
+      <div class="col-3"><%= f.text_field :last_name_kana, style: "border-radius: 5px; border: 1px solid black;" %></div>
+      <div class="col-3"><%= f.text_field :first_name_kana, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">郵便番号</div>
-      <div class="col-3"><%= f.text_field :post_code %></div>
+      <div class="col-3"><%= f.text_field :post_code, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">住所</div>
-      <div class="col-3"><%= f.text_field :address %></div>
+      <div class="col-3"><%= f.text_field :address, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">電話番号</div>
-      <div class="col-3"><%= f.text_field :telephone_number %></div>
+      <div class="col-3"><%= f.text_field :telephone_number, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">メールアドレス</div>
-      <div class="col-3"><%= f.text_field :email %></div>
+      <div class="col-3"><%= f.text_field :email, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-4">
       <div class="col-3">会員ステータス</div>
