@@ -29,9 +29,14 @@
           <span class="boxed"> ログアウト </span>
         <% end %>
       </li>
-    <% elsif customer_signed_in? %>
-      <li style="margin-right: 10px;">
-        <%= link_to customers_my_page_path(current_customer),class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+
+<% elsif customer_signed_in? %>
+       <li style="margin: 40px 40px 0 0px;">
+    <span>ようこそ、<%= current_customer.last_name %>さん！</span>
+  </li>
+       <li style="margin-right: 10px;">
+          <%= link_to customers_my_page_path(current_customer),class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+
           <span class="boxed"> マイページ </span>
         <% end %>
       </li>
@@ -48,30 +53,33 @@
       <li style="margin-right: 10px;">
         <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
           <span class="boxed"> ログアウト </span>
-        <% end %>
-      </li>
-    <% else %>
-      <li style="margin-right: 10px;">
-        <%= link_to about_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
-          <span class="boxed"> about </span>
-        <% end %>
-      </li>
-      <li style="margin-right: 10px;">
-        <%=  link_to items_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
-          <span class="boxed"> 商品一覧 </span>
-        <% end %>
-      </li>
-      <li style="margin-right: 10px;">
-        <%= link_to new_customer_registration_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
-          <span class="boxed"> 新規登録 </span>
-        <% end %>
-      </li>
-      <li style="margin-right: 10px;">
-        <%= link_to new_customer_session_path ,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
-          <span class="boxed"> ログイン </span>
-        <% end %>
-      </li>
-    <% end %>
+
+          <% end %>
+        </li>
+        
+<% else %>
+     <li style="margin-right: 10px;">
+     <%= link_to about_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+     <span class="boxed"> about </span>
+     <% end %>
+   </li>
+   <li style="margin-right: 10px;">
+     <%=  link_to items_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+     <span class="boxed"> 商品一覧 </span>
+     <% end %>
+   </li>
+   <li style="margin-right: 10px;">
+     <%= link_to new_customer_registration_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+     <span class="boxed"> 新規登録 </span>
+     <% end %>
+   </li>
+   <li style="margin-right: 10px;">
+     <%= link_to new_customer_session_path ,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
+     <span class="boxed"> ログイン </span>
+     <% end %>
+   </li>
+<% end %>
+
 
   </ul>
 </div>
