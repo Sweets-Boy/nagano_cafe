@@ -1,35 +1,34 @@
 <div class="container" style="max-width: 60%; margin: 0 auto;">
   <div class="row">
-    <h4 class="m-1" style="background-color: #E6E6E6;">会員一覧</h4>
+    <h4 class="m-2" style="background-color: #E6E6E6;">会員一覧</h4>
   </div>
 
- <table class="table text-center">
-  <thead>
-    <tr class="index-tr" style="background-color: #E6E6E6;">
-      <th scope="col">会員ID</th>
-      <th scope="col">氏名</th>
-      <th scope="col">メールアドレス</th>
-      <th scope="col">ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-   <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= link_to customer.full_name, admin_customer_path(customer), style: "color: black;" %></td>
-      <td><%= customer.email %></td>
-      <td>
-       <% if customer.is_active %>
-        <span style="color: green; font-weight: bold;">有効</span>
-       <% else %>
-        <span style="color: grey; font-weight: bold;">退会</span>
-       <% end %>
-      </td>
-    </tr>
-
-    <% end %>
-  </tbody>
- </table>
+  <table class="table text-center">
+    <thead>
+      <tr class="index-tr" style="background-color: #E6E6E6;">
+        <th scope="col">会員ID</th>
+        <th scope="col">氏名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.full_name, admin_customer_path(customer), style: "color: black; text-decoration: underline;" %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_active %>
+              <span style="color: green; font-weight: bold;">有効</span>
+            <% else %>
+              <span style="color: grey; font-weight: bold;">退会</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 </div>
 <%= paginate @customers %>
