@@ -1,22 +1,24 @@
 
 
 <div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ジャンル</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% genres.each do |genre| %>
-        <% unless genre.nil? %>
-          <tr>
-            <td><%= genre.name %></td>
-            <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:'btn btn-success' %></td>
-          </tr>
+  <div class="col-4">
+    <table class="table">
+      <thead>
+        <tr style="background-color: #E6E6E6;">
+          <th>ジャンル</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% genres.each do |genre| %>
+          <% unless genre.nil? %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class:'btn btn-success' %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -4,7 +4,7 @@
 
     <ul class="p-0 ml-2" style="list-style: none;">
       <% genres.each do |genre| %>
-        <li class="mx-3 my-2" style="color: #000000"><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %></li>
+        <li class="mx-3 my-2"><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get, style:'color:#000000;' %></li>
       <% end %>
     </ul>
 

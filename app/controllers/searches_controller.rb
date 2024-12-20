@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     if @keyword.present?
       @items = Item.search_by_keyword(@keyword).page(params[:page]).per(8)
     else
-      @items = Item.none
+      redirect_to root_path
     end
   end
 

@@ -5,8 +5,8 @@
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.get_image(200, 100) %>
     <% end %>
-    <p><%= item.name %></p>
-    <p>¥<%= number_with_delimiter(item.price) %></p>
+    <p><strong><%= item.name %></strong></p>
+    <p><strong>¥<%= number_with_delimiter(item.price) %></strong></p>
   </div>
   <% end %>
 
