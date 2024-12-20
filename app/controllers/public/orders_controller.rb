@@ -15,11 +15,10 @@ class Public::OrdersController < ApplicationController
           price: cart_item.item.with_tax_price
         )
       end
-      p @order
       @cart_items.destroy_all
       redirect_to thanks_orders_path
     else
-      render :confirm_orders_path
+      render :new
     end
   end
 
@@ -34,16 +33,25 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.full_name
     when "address_list"
       address = current_customer.addresses.find_by(id: params[:order][:address_id])
-      @order.postal_code = address.postal_code
-      @order.address = address.address
-      @order.name = address.name
+      if address.nil?
+        flash[:error] = "登録してある配送先住所から選択してください。"
+        render :new and return
+      else
+        @order.postal_code = address.postal_code
+        @order.address = address.address
+        @order.name = address.name
+      end
     when "new_address"
       if new_address_params?
         @order.postal_code = params[:order][:postal_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
+      else
+        flash[:error] = "新しいお届け先の情報が不足しています。"
+        render :new and return
       end
     else
+      flash[:error] = "住所の選択に問題があります。再度確認してください。"
       render :new
     end
   end
