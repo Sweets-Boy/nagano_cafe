@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ .search-wrapper {
+  margin-top: 5cm; 
+  text-align: right; 
+ }
+ .header {
+  height: 100px; /* 適切な値を指定 */
+}

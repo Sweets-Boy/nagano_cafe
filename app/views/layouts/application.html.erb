@@ -11,12 +11,12 @@
   </head>
 
   <body>
-     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-        <div class="container">
+  <header style="background-color: mintcream;">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
           
           <%= link_to root_path do %>
-            <%= image_tag "logo.png", class: "header-logo", alt: "nagano_cafe" %>
+            <%= image_tag "logo.png", class: "header-logo", alt: "nagano_cafe", alt: "nagano_cafe", width: "200", height: "50", style: "margin-top: 30px;"  %>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,17 +25,18 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <%= render 'layouts/header' %> 
           </div>
-          
-           <div class="search">
+       </nav>
+           <div class="search"style="text-align: right; padding-right: 100px;">
             <%= form_with url: keyword_search_path, method: :get, local: true do |f| %>
               <%= f.text_field :keyword, placeholder: "Search" %>
               <%= button_tag(type: 'submit') do %>
                 <i class="fa-solid fa-magnifying-glass"></i>
               <% end %>
             <% end %>
-          </div>
+           </div>
+          
         </div>
-      </nav>
+      
     </header>
 
     
