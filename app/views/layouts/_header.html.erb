@@ -30,6 +30,9 @@
         <% end %>
       </li>
 <% elsif customer_signed_in? %>
+       <li style="margin: 40px 40px 0 0px;">
+    <span>ようこそ、<%= current_customer.last_name %>さん！</span>
+  </li>
        <li style="margin-right: 10px;">
           <%= link_to customers_my_page_path(current_customer),class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
           <span class="boxed"> マイページ </span>
@@ -50,7 +53,8 @@
           <span class="boxed"> ログアウト </span>
           <% end %>
         </li>
-      <% else %>
+        
+<% else %>
      <li style="margin-right: 10px;">
      <%= link_to about_path,class: 'nav-link text-dark border border-gray p-1', style: 'border-radius: 5px;'  do %>
      <span class="boxed"> about </span>
@@ -71,7 +75,6 @@
      <span class="boxed"> ログイン </span>
      <% end %>
    </li>
-
 <% end %>
 
     </ul>
