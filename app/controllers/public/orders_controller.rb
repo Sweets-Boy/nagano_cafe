@@ -34,7 +34,7 @@ class Public::OrdersController < ApplicationController
     when "address_list"
       address = current_customer.addresses.find_by(id: params[:order][:address_id])
       if address.nil?
-        flash[:error] = "登録してある配送先住所から選択してください。"
+        flash[:error] = "※登録してある配送先住所から選択してください。"
         render :new and return
       else
         @order.postal_code = address.postal_code
@@ -61,6 +61,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.includes(order_details: :item)
+    @orders = Order.order(created_at: :desc)
   end
 
   def show
