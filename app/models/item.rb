@@ -7,7 +7,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validates :genre_id, presence: true
+  validates :image, presence: true
   validates :name, presence: true
   validates :introduction, presence: true, length: { maximum:150 }
   validates :price, presence:true

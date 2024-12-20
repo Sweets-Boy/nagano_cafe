@@ -4,25 +4,29 @@
   <div class="row mt-5">
 
     <%= render 'homes/genre_index', genres:@genres %>
+
     <div class="col-9">
+      
       <div class="row">
         <h3>" <%= @genre.name %> "一覧</h3>
         <p>(全<%= @items.count %>件)</p>
       </div>
 
-      <% if @items.present? %>
-        <% @items.each do |item| %>
-        <div class="col-3">
-          <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_image(200, 100) %>
+      <div class="row d-wrap mt-3">
+        <% if @items.present? %>
+          <% @items.each do |item| %>
+          <div class="col-3">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(200, 100) %>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>¥<%= number_with_delimiter(item.price) %></p>
+          </div>
           <% end %>
-          <p><%= item.name %></p>
-          <p>¥<%= number_with_delimiter(item.price) %></p>
-        </div>
+        <% else %>
+          <p>該当する商品が見つかりませんでした</p>
         <% end %>
-      <% else %>
-        <p>商品が見つかりませんでした</p>
-      <% end %>
+      </div>
 
     </div>
     

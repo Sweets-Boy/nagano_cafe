@@ -1,13 +1,23 @@
-<h4>ジャンル編集</h4>
+<div class="container">
 
-<%= render 'layouts/errors', obj:@genre %>
+  <div class="row mt-4 pl-5">
+    <h4 style="background-color: #E6E6E6;">ジャンル編集</h4>
+  </div>
 
-<%= form_with url:admin_genre_path, model: @genre, method: :patch do |f| %>
-  <table>
-    <tr>
-      <td><%= f.label :name, "ジャンル名" %></td>
-      <td><%= f.text_field :name, placeholder: "ジャンル名" %></td>
-      <td><%= f.submit '変更を保存', class:'btn btn-success' %></td>
-    </tr>
-  </table>
-<% end %>
+  <%= render 'layouts/errors', obj:@genre %>
+
+  <div class="row my-5">
+    <div class="col-7">
+      <%= form_with url:admin_genre_path, model: @genre, method: :patch do |f| %>
+        <table>
+          <tr>
+            <td><%= f.label :name, "ジャンル名", class:'mr-5' %></td>
+            <td><%= f.text_field :name, placeholder: "ジャンル名", class:'mr-5' %></td>
+            <td><%= f.submit '変更を保存', class:'btn btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+
+</div>
