@@ -2,7 +2,7 @@
   <div class="row">
     <h3 class="m-5", style="background-color: #E6E6E6;"><%= @customer.full_name %>さんの会員情報編集</h3>
   </div>
-  <%= form_with model: @customer, url: edit_admin_customer_path(@customer), local: true do |f| %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
 
     <div class ="row mb-2">
         <div class="col-3">会員ID</div>
@@ -21,7 +21,7 @@
     </div>
     <div class="row mb-2">
       <div class="col-3">郵便番号</div>
-      <div class="col-3"><%= f.text_field :post_code, style: "border-radius: 5px; border: 1px solid black;" %></div>
+      <div class="col-3"><%= f.text_field :postal_code, style: "border-radius: 5px; border: 1px solid black;" %></div>
     </div>
     <div class="row mb-2">
       <div class="col-3">住所</div>
@@ -46,7 +46,9 @@
     </div>
     <div class="row mb-2">
       <div class="col-3"></div>
-      <div class="col-6"><%= link_to '変更を保存', admin_customer_path(@customer), class: "btn btn-lg btn-success" %></div>
+      <div class="col-6">
+        <%= f.submit '変更を保存', class: "btn btn-lg btn-success" %>
+      </div>
     </div>   
 <% end %>
      

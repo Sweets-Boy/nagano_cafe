@@ -28,7 +28,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.includes(:item)
     case params[:order][:address_select]
     when "customer_address"
-      @order.postal_code = current_customer.post_code
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
     when "address_list"
@@ -60,8 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.includes(order_details: :item)
-    @orders = Order.order(created_at: :desc)
+    @orders = current_customer.orders.includes(order_details: :item).order(created_at: :desc)
   end
 
   def show

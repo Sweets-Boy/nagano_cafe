@@ -19,6 +19,10 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :new, :show, :edit, :create, :update]
     get '/' => 'homes#top'
+
+    resources :customers, only: [:show] do
+      resources :orders, only: [:index]
+    end
   end
 
 
