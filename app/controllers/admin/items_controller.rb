@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @genres = Genre.all
     if @item.save
-      redirect_to admin_items_path, notice: '商品を登録しました'
+      redirect_to admin_item_path(@item), notice: '商品を登録しました'
     else
       render :new
     end

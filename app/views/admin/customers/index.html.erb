@@ -17,7 +17,7 @@
    <% @customers.each do |customer| %>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= link_to customer.full_name, admin_customer_path(customer), style: "color: black;" %></td>
+      <td><%= link_to customer.full_name, admin_customer_path(customer), style: "color: black; text-decoration: underline" %></td>
       <td><%= customer.email %></td>
       <td>
        <% if customer.is_active %>
