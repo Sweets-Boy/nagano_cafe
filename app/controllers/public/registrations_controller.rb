@@ -39,6 +39,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   
   # protected
+   # 新規登録後のリダイレクト先を変更
+   def after_sign_up_path_for(resource)
+    customers_my_page_path # マイページへのルート名をここに記述
+  end
+ 
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
