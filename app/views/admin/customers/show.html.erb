@@ -22,7 +22,7 @@
    
     <div class="row mt-3">
        <div class="col-3">郵便番号</div>
-       <div class="col-3"><%= @customer.post_code %></div>
+       <div class="col-3"><%= @customer.postal_code %></div>
     </div>
 
     <div class="row mt-3">
@@ -57,7 +57,7 @@
       <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_admin_customer_#{@customer.id}" %>
     </div>
     <div class="col-3">
-      <%= link_to '注文一覧を見る', admin_path(@customer), class: "btn btn-sm btn-primary" %></div>
+      <%= link_to '注文一覧を見る', admin_customer_orders_path(@customer), class: "btn btn-sm btn-primary" %></div>
     </div>
   </div>
 </div>

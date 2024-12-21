@@ -6,6 +6,15 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
   end
 
+  def index
+    @customer = Customer.find_by(id: params[:customer_id])
+    if @customer.nil?
+      redirect_to admin_customers_path, alert: "会員が見つかりません。"
+    else
+      @orders = @customer.orders.includes(order_details: :item).order(created_at: :desc).page(params[:page])
+    end
+  end
+
   def update
     @order = Order.find(params[:id])
     status = params[:order][:status]

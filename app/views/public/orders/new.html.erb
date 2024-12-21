@@ -28,7 +28,7 @@
         <%= f.radio_button :address_select, "customer_address", checked: true %>
         <%= f.label :address_select, "ご自身の住所" %>
         <div class="col ml-3 mb-3">
-          〒<%= current_customer.post_code %> <%= current_customer.address %>
+          〒<%= current_customer.postal_code %> <%= current_customer.address %>
           <br/>
           <%= current_customer.last_name %><%= current_customer.first_name %>
         </div>
@@ -40,7 +40,7 @@
         <%= f.radio_button :address_select, "address_list" %>
         <%= f.label :address_select, "登録済み住所から選択" %>
         <div class="col ml-2 mb-3">
-          <div><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), { include_blank: '登録してある配送先住所から選択' } %></div>
+          <div><%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display), { include_blank: '登録してある配送先住所から選択' } %></div>
         </div>
       </div>
     </div>
