@@ -5,6 +5,12 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+
+    unless customer_signed_in?
+      redirect_to new_customer_session_path, notice: 'ログインが必要です'
+      return
+    end
+
     cart_item = current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
 
     if cart_item_params[:amount].nil? || cart_item_params[:amount].to_i <= 0
@@ -12,6 +18,7 @@ class Public::CartItemsController < ApplicationController
       redirect_back fallback_location: item_path(params[:cart_item][:item_id])
       return
     end
+
 
     if cart_item
       cart_item.amount += cart_item_params[:amount].to_i
